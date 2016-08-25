@@ -49,12 +49,15 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
                     nextStep = true;
                     console.log(message.text);
                     response.query = _.without(response.texto, response.texto[0]).join(' ');
-                        rtm.sendMessage('En que dispositivo lo quieres mostrar? 1. showroom, 2. tv sala 1: ', response.dm.id, function (err, msg) {
+                        rtm.sendMessage('En que dispositivo lo quieres mostrar? _*1.*_:    showroom, _*2.*_:    tv sala 1: ', response.dm.id, function (err, msg) {
                          
                     });
-
                 }
-                else { rtm.sendMessage('Me tienes que decir que es lo que quieres hacer con ese termino ' + response.user.name + '!', response.dm.id); }; 
+                else {
+                        rtm.sendMessage(">utiliza *'youtube'*, *'video'* o *'play'* seguido del termino que quieras encontrar para reproducir un _*video*_.", response.dm.id);
+                        rtm.sendMessage(">utiliza *'image'*, *'images'*, *'picture'*, *'pictures'* o *'flickr'* seguido del termino que quieras encontrar para mostrar una _*imagen*_.", response.dm.id);
+                        rtm.sendMessage(">y por ultimo utiliza *'busca'*, *'google'*, *'web'* o *'search'* seguido del termino que quieras encontrar para mostrar la _*pagina web*_ que desees.", response.dm.id); 
+                }
           }
           else { rtm.sendMessage('tienes que decirme que quieres que busque y que hago con ello ' + response.user.name + '!', response.dm.id); };
     }
