@@ -4,18 +4,18 @@ var _ = require('underscore');
 var google = require('google');
 var youtube = require('youtube-search');
 var Scraper = require ('images-scraper')
-// , bing = new Scraper.Bing();
+, bing = new Scraper.Bing();
 
 google.resultsPerPage = 1;
 
 exports.search = function(query, querySource, callback) {
   querySource = querySource.toLowerCase();
-	if(querySource === 'internet' || querySource === 'web' || querySource == 'google')
+	if(querySource === 'internet' || querySource === 'web' || querySource == 'google' || querySource == 'search')
 		searchWeb(query, callback);
 	else if(_.indexOf(['image', 'images', 'picture', 'pictures', 'flickr'], querySource) >= 0){
 		searchImage(query, callback);
 	}
-	else if( querySource == 'youtube' || 'video') searchVideo(query, callback);
+	else if( querySource == 'youtube' || 'video' || 'play') searchVideo(query, callback);
 	else {
 		callback(undefined, {'type': 'image', 'content': 'http://i.imgur.com/Ql6Dvqa.jpg' });
 	}
