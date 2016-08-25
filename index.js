@@ -37,7 +37,7 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
                        content.screen = device; 
                        console.log('contenido a enviar: ', content); 
                        request.post({
-                            url:'https://c67cac8a2eae1d04f5928b5b1603a36ae49eafede475c07838e278610d7e0a.resindevice.io/content',
+                            url: tokenLibrary.baseUrl+'/content',
                             json: content
                        });
                 });
